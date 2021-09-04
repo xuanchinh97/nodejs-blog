@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect scr/index.js",
-    "watch": "node-sass --watch scr/sources/scss/ -o scr/public/css/",
+    "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass --watch src/sources/scss/ -o src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
