@@ -1,6 +1,4 @@
-
 class NewsController {
-
     // [GET] /new
     index(req, res) {
         res.render('news');
@@ -8,9 +6,8 @@ class NewsController {
 
     // [get] /news:slug
     show(req, res) {
-        res.send('defualt')
+        res.send('defualt');
     }
-
 }
 
-module.exports = new NewsController;
+module.exports = new NewsController();
