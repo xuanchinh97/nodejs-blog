@@ -7,7 +7,8 @@
     "beautiful": "lint-staged",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/sources/scss/ -o src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +17,8 @@
     "express-handlebars": "^5.3.3"
   },
   "devDependencies": {
-    "husky": "^7.0.2",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.0",
     "lint-staged": "^11.1.2",
     "morgan": "^1.10.0",
     "node-sass": "^6.0.1",
@@ -26,6 +28,17 @@
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
-  "prepare":  "husky install",
-  "create-hook": "husky add .husky/pre-commit \"int-staged\""
+  "pre-commit": "lint-staged",
+  "prepare": "husky install",
+  "create-hook": "husky add .husky/pre-commit \"int-staged\"",
+  "rules": {
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ]
+  }
 }
