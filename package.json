@@ -6,7 +6,7 @@
   "scripts": {
     "beautiful": "lint-staged",
     "start": "nodemon --inspect src/index.js",
-            "watch": "node-sass --watch src/sources/scss/ -o src/public/css/",
+    "watch": "node-sass --watch src/sources/scss/ -o src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -25,5 +25,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
-  }
+  },
+  "prepare":  "husky install",
+  "create-hook": "husky add .husky/pre-commit \"int-staged\""
 }
