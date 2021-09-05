@@ -4,10 +4,13 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 
 const route = require('./routes');
+const db = require('./config/db');
 
+//connect to db
+db.connect();
 const app = express();
 
-        app.use(express.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //khai báo url tĩnh
