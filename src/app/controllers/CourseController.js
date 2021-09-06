@@ -18,12 +18,29 @@ class CourseController {
     // [POST] /courses/store
     store(req, res, next) {
         const formData = req.body;
-        formData.img = `https://img.youtube.com/vi/{req.body.videoId}/sddefault.jpg`;
+        const videoId = formData.videoId;
+        formData.img = `https://img.youtube.com/vi/${videoId}/sddefault.jpg`;
         const course = new Course(formData);
         course
             .save()
             .then(() => res.redirect('/'))
-            .catch((error) => {});
+            .catch(next);
+    }
+    // [GET] /courses/:id/edit
+    edit(req, res, next) {
+        Course.findById(req.params.id)
+            .then((course) =>
+                res.render('courses/edit', {
+                    course: mongooseToOject(course),
+                }),
+            )
+            .catch(next);
+    }
+    // [PUT] / courses/:id
+    update(req, res, next) {
+        Course.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('./me/stored/courses'))
+            .catch(next);
     }
 }
 
