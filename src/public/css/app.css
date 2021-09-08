@@ -1,5 +1,12 @@
 h1 {
-  color: red; }
+  color: #00ff6a; }
 
 .car-mt-20 {
   margin: 20px; }
+
+.checkbox-select-all-options {
+  width: 10px !important;
+  font-size: 23rem; }
+
+h2 {
+  color: red; }
