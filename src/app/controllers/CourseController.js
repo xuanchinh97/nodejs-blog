@@ -86,6 +86,7 @@ class CourseController {
                 break;
             default:
                 res.json({ message: 'Action is invalid !!!' });
+                break;
         }
     }
 }
