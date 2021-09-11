@@ -3,6 +3,7 @@ var methodOverride = require('method-override');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const sortMiddleware = require('./app/middlewares/SortMiddleware');
 
 //connect to db
 const route = require('./routes');
@@ -20,6 +21,22 @@ app.engine(
     exphbs({
         helpers: {
             sum: (a, b) => a + b,
+            sortTable(field, sort) {
+                const sortType = field === sort.column ? sort.type : 'default';
+                const icons = {
+                    default: 'fas fa-sort',
+                    asc: 'fas fa-sort-up',
+                    desc: 'fas fa-sort-down',
+                };
+                const types = {
+                    default: 'desc',
+                    asc: 'desc',
+                    desc: 'asc',
+                };
+                const icon = icons[sortType];
+                const type = types[sortType];
+                return `<a href="?_sort&column=${field}&type=${type}"><i class="${icon}"></i></a>`;
+            },
         },
     }),
 );
@@ -38,6 +55,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //set url source file
 app.set('views', path.join(__dirname, 'sources/views'));
+
+//custom middleware
+app.use(sortMiddleware);
 
 route(app);
 

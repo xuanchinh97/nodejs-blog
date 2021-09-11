@@ -5,6 +5,7 @@ const mongooseDelete = require('mongoose-delete');
 
 const Course = new Schema(
     {
+        _id: { type: Number },
         name: { type: String, maxlength: 255, required: true },
         description: { type: String, maxlength: 600 },
         img: { type: String, maxlength: 600 },
@@ -13,6 +14,7 @@ const Course = new Schema(
         slug: { type: String, slug: 'name', unique: true },
     },
     {
+        _id: false,
         timestamps: true,
     },
 );
